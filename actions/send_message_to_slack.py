@@ -5,7 +5,7 @@ from st2common.runners.base_action import Action
 class SendMessageToSlackAction(Action):
     def run(self, message, channel_id):
         client = slack.WebClient(token=self.config['token'])
-        m = client.chat_postMessage(text=message, channel=self._config['channel_id'])
+        m = client.chat_postMessage(text=message, channel=self.config['channel_id'])
         return m
 
     # def run(self, message):
