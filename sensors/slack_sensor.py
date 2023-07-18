@@ -13,6 +13,7 @@ class SlackSensor(PollingSensor):
 
     def setup(self):
         self._client = slack.WebClient(token=self._config['token'])
+        print(self._client)
         #self._last_id = None
 
     def poll(self):
@@ -41,35 +42,5 @@ class SlackSensor(PollingSensor):
     def _dispatch_trigger(self, update):
         trigger = self._trigger_ref
         self._sensor_service.dispatch(trigger, update)
+        print("Trigger dispatched:", trigger, "with update:", update)
 
-    # def poll(self):
-    #     slack_token = ""
-    #     channel_id = ""
-
-    #     client = WebClient(token=slack_token)
-    #     messages = client.conversations_history(channel=channel_id)
-
-    #     if not messages:
-    #         return
-
-    #     print(messages)
-
-    #     import time
-
-    #     current_time = time.time()
-    #     two_minutes_ago = current_time - (2 * 60)  # Convert 2 minutes to seconds
-
-    #     filtered_messages = []
-
-    #     for message in messages['messages']:
-    #         timestamp = float(message['ts'])
-    #         if timestamp >= two_minutes_ago and timestamp <= current_time:
-    #             filtered_messages.append(message)
-
-    #     print(filtered_messages)
-
-
-if __name__ == '__main__':
-    
-    bot = SendMessageToSlackAction()
-    bot.poll()
