@@ -8,3 +8,5 @@ cp packs/slack_dilshan/slack_dilshan.yaml /opt/stackstorm/configs/slack_dilshan.
 st2ctl reload --register-configs
 
 st2ctl reload --register-rules
+
+st2ctl reload --register-actions

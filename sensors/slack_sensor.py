@@ -39,8 +39,14 @@ class SlackSensor(PollingSensor):
     def remove_trigger(self):
         pass
 
-    def _dispatch_trigger(self, update):
+    # def _dispatch_trigger(self, update):
+    #     trigger = self._trigger_ref
+    #     self._sensor_service.dispatch(trigger, update)
+    #     print("Trigger dispatched:", trigger, "with update:", update)
+
+    def _dispatch_trigger(self, update, message):
         trigger = self._trigger_ref
-        self._sensor_service.dispatch(trigger, update)
-        print("Trigger dispatched:", trigger, "with update:", update)
+        payload = update.copy()
+        payload['message'] = message
+        self._sensor_service.dispatch(trigger, payload)
 
