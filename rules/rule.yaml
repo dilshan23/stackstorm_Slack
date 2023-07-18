@@ -1,5 +1,5 @@
 name: "crosslink-slack-to-reamaze"
-pack: "slack_dilshan_tutorial"
+pack: "slack_dilshan"
 description: "This rule scans the Slack RTM for mentions of reamaze and creates an issue notification with a permalink between Slack History and mentioned issues"
 enabled: true
 trigger:

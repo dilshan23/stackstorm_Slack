@@ -1,6 +1,6 @@
 ---
 name: slack_dilshan
-ref: slack_dilshan_tutorial
+ref: slack_dilshan
 description: Tutorial pack for ChatOps
 version: 0.3.0
 author: dilshan
