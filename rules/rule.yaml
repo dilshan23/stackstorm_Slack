@@ -8,7 +8,7 @@ criteria:
     type: "contains"
     pattern: "email"
 action:
-  ref: "send_message_to_slack"
+  ref: "send_message"
   parameters:
     user: "{{trigger.user.name}}"
     text: "{{trigger.text}}"
