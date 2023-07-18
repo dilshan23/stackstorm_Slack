@@ -1,0 +1,15 @@
+---
+  name: "send_message"
+  runner_type: "python-script"
+  description: "send a message to a channel"
+  enabled: true
+  entry_point: "send_message_to_slack.py"
+  parameters:
+    message:
+      type: "string"
+      description: "message to send"
+      required: true
+    channel_id:
+      type: "string"
+      description: "channel_id to post the message"
+      required: true

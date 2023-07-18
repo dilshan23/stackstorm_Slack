@@ -1,33 +1,75 @@
 from slack import WebClient
+from st2reactor.sensor.base import PollingSensor
 
+class SlackSensor(PollingSensor):
 
-class SendMessageToSlackAction():
+    def __init__(self, sensor_service, config, poll_interval):
+        super(SlackSensor, self).__init__(sensor_service=sensor_service,
+                                             config=config,
+                                             poll_interval=poll_interval)
+        self._trigger_name = 'new_update'
+        self._trigger_pack = 'slack_dilshan'
+        self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
+
+    def setup(self):
+        self._client = WebClient(token=self._config['token'])
+        #self._last_id = None
+
     def poll(self):
-        slack_token = ""
-        channel_id = ""
+        #if not self._last_id:
+        updates = self._client.conversations_history(channel=self._config['channel_id'])
+        #else:
+        #updates = self._client.getUpdates(offset=self._last_id + 1)
 
-        client = WebClient(token=slack_token)
-        messages = client.conversations_history(channel=channel_id)
+        if updates:
+            for u in updates:
+                self._dispatch_trigger(u.to_dict())
+            #self._last_id = updates[-1].update_id
 
-        if not messages:
-            return
+    def update_trigger(self):
+        pass
 
-        print(messages)
+    def add_trigger(self, trigger):
+        pass
 
-        import time
+    def cleanup(self):
+        pass
 
-        current_time = time.time()
-        two_minutes_ago = current_time - (2 * 60)  # Convert 2 minutes to seconds
+    def remove_trigger(self):
+        pass
 
-        filtered_messages = []
+    def _dispatch_trigger(self, update):
+        trigger = self._trigger_ref
+        self._sensor_service.dispatch(trigger, update)
 
-        for message in messages['messages']:
-            timestamp = float(message['ts'])
-            if timestamp >= two_minutes_ago and timestamp <= current_time:
-                filtered_messages.append(message)
+    # def poll(self):
+    #     slack_token = ""
+    #     channel_id = ""
 
-        print(filtered_messages)
+    #     client = WebClient(token=slack_token)
+    #     messages = client.conversations_history(channel=channel_id)
+
+    #     if not messages:
+    #         return
+
+    #     print(messages)
+
+    #     import time
+
+    #     current_time = time.time()
+    #     two_minutes_ago = current_time - (2 * 60)  # Convert 2 minutes to seconds
+
+    #     filtered_messages = []
+
+    #     for message in messages['messages']:
+    #         timestamp = float(message['ts'])
+    #         if timestamp >= two_minutes_ago and timestamp <= current_time:
+    #             filtered_messages.append(message)
+
+    #     print(filtered_messages)
 
 
-bot = SendMessageToSlackAction()
-bot.poll()
+if __name__ == '__main__':
+    
+    bot = SendMessageToSlackAction()
+    bot.poll()

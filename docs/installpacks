@@ -1,0 +1,5 @@
+# install packgaes locally for testing
+
+git clone st2
+cd st2/st2reactoeR
+/st2/st2reactor$ sudo python3 setup.py install
