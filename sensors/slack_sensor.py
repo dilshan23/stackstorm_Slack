@@ -1,4 +1,4 @@
-from slack import WebClient
+import slack 
 from st2reactor.sensor.base import PollingSensor
 
 class SlackSensor(PollingSensor):
@@ -12,7 +12,7 @@ class SlackSensor(PollingSensor):
         self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
 
     def setup(self):
-        self._client = WebClient(token=self._config['token'])
+        self._client = slack.WebClient(token=self._config['token'])
         #self._last_id = None
 
     def poll(self):

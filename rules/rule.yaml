@@ -1,15 +1,14 @@
-name: "crosslink-slack-to-reamaze"
+name: "slack_respond_to_email_send"
 pack: "slack_dilshan"
-description: "This rule scans the Slack RTM for mentions of reamaze and creates an issue notification with a permalink between Slack History and mentioned issues"
-enabled: true
+description: "This rule scans the Slack for email send instructions ,send email and respond back to channel"
 trigger:
   type: "slack.message"
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "stackstorm.reamaze.com/admin/conversations"
+    pattern: "email"
 action:
-  ref: "stackstorm.crosslink_slack_to_reamaze"
+  ref: "slack_dilshan.send_message_to_slack"
   parameters:
     user: "{{trigger.user.name}}"
     text: "{{trigger.text}}"
