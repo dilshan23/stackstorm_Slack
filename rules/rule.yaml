@@ -1,6 +1,6 @@
 name: "slack_respond_to_email_send"
 pack: "slack_dilshan"
-description: "This rule scans the Slack for email send instructions ,send email and respond back to channel"
+description: "This rule scans the Slack for email send instructions ,send an email and respond back to channel"
 trigger:
   type: "slack.message"
 criteria:
@@ -8,7 +8,7 @@ criteria:
     type: "contains"
     pattern: "email"
 action:
-  ref: "slack_dilshan.send_message_to_slack"
+  ref: "send_message_to_slack"
   parameters:
     user: "{{trigger.user.name}}"
     text: "{{trigger.text}}"
