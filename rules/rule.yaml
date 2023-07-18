@@ -4,12 +4,12 @@ description: "This rule scans the Slack for email send instructions ,send an ema
 enabled: true 
 trigger:
   type: "slack.message"
-criteria:
-  trigger.text:
-    type: "contains"
-    pattern: "email"
+# criteria:
+#   trigger.text:
+#     type: "contains"
+#     pattern: "email"
 action:
-  ref: "send_message"
+  ref: "slack_dilshan.send_message"
   parameters:
     user: "{{trigger.user.name}}"
     text: "{{trigger.text}}"
