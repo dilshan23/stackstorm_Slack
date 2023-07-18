@@ -1,0 +1,17 @@
+name: "slack_respond_to_email_send"
+pack: "slack_dilshan"
+description: "This rule scans the Slack for email send instructions, sends an email, and responds back to the channel"
+enabled: true
+trigger:
+  type: "slack_dilshan.new_update"
+criteria:
+  trigger.text:
+    type: "contains"
+    pattern: "email"
+action:
+  ref: "slack_dilshan.send_message"
+  parameters:
+    user: "{{trigger.user.name}}"
+    text: "{{trigger.text}}"
+    channel: "{{trigger.channel.name}}"
+    timestamp: "{{trigger.timestamp_raw}}"
