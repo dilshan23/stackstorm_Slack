@@ -125,7 +125,7 @@ class SampleSensor(Sensor):
             match = re.search(pattern, text)
 
             if match:
-                payload1 = {"text":"email"}
+                payload1 = {"text":"test"}
                 email_address = match.group(1)
             
                 text1 = "sending email to "+email_address

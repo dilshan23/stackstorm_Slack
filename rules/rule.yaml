@@ -7,9 +7,9 @@ trigger:
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "email"
+    pattern: "test"
 action:
   ref: "slack_dilshan.send_message"
-  parameters:
-    text: "{{trigger.text}}"
+  # parameters:
+  #   text: "{{trigger.text}}"
  
