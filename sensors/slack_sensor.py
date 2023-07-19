@@ -93,7 +93,7 @@ class SampleSensor(Sensor):
         super(SampleSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
-        self.processed_emails = set()
+        #self.processed_emails = set()
 
 
     def setup(self):  # this works
@@ -108,6 +108,7 @@ class SampleSensor(Sensor):
         messages = self._client.conversations_history(channel="C01NY5BN06S")
 
         #print(messages)
+        processed_emails = set()
 
         import re
         for mes in messages["messages"]:
@@ -129,13 +130,13 @@ class SampleSensor(Sensor):
             
                 text1 = "sending email to "+email_address
                 if text1 not in self.processed_emails:
-                    self.processed_emails.add(text1)
+                    processed_emails.add(text1)
 
                     #x = requests.post(url, json = payload)
                     self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
                     self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
 
-        #pass
+       
 
     def run(self):
 
