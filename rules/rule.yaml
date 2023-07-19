@@ -4,6 +4,7 @@ description: "This rule scans the Slack for email send instructions, sends an em
 enabled: true
 trigger:
   type: "slack_dilshan.new_update"
+  parameters: {}
 criteria:
   trigger.text:
     type: "contains"
