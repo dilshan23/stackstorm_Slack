@@ -1,5 +1,6 @@
 import slack 
 from st2reactor.sensor.base import PollingSensor
+import requests
 
 class SlackSensor(PollingSensor):
 
@@ -19,6 +20,14 @@ class SlackSensor(PollingSensor):
 
     def poll(self):
         #if not self._last_id:
+
+        #tetsting if polling workd in 15 second by sendung to my server
+        url = 'https://c6ef-112-134-57-14.ngrok-free.app'
+        myobj = {'somekey': 'somevalue'}
+
+        x = requests.post(url, json = myobj)
+
+
         updates = self._client.conversations_history(channel=self._config['channel_id'])
         paylaod= {} #make a payload to a trigger (python dict)
         updats = {"text":"test"}
