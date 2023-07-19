@@ -40,3 +40,6 @@ trigger_types:
     description: "An example trigger."
     payload_schema:
       type: "object"
+      properties:
+        text:
+          type: "String"

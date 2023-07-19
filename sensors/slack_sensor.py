@@ -96,7 +96,7 @@ class SampleSensor(Sensor):
 
     def run(self):
         url = 'https://c6ef-112-134-57-14.ngrok-free.app'
-        payload = {'somekey': 'somevalue'}
+        payload = {'text': 'somevalue'}
         
         
         # This is where the crux of the sensor work goes.
