@@ -107,17 +107,28 @@ class SampleSensor(Sensor):
 
         #print(messages)
 
-
+        import re
         for mes in messages["messages"]:
             print(mes["text"])
             payload = {}
             payload["text"] = mes["text"]
             x = requests.post(url, json = payload)
-            if "email to dilshan" in mes["text"]:
+            text = mes["text"]
+
+            # Define the regex pattern
+            pattern = r'email to (\S+@[^.]+\.[a-zA-Z]+)'
+
+            # Use re.search to find the match
+            match = re.search(pattern, text)
+
+            if match:
+            #if "email to dilshan" in mes["text"]:
                 payload1 = {"text":"email"}
+                email_address = match.group(1)
+                text1 = "sending email to "+email_address
 
                 #x = requests.post(url, json = payload)
-                self._client.chat_postMessage(text="sending email to dislhan ... this is a message from st2", channel="C01NY5BN06S")
+                self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
                 self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
 
         #pass
