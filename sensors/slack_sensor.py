@@ -92,7 +92,10 @@ class SampleSensor(Sensor):
     def setup(self):
         # Setup stuff goes here. For example, you might establish connections
         # to external system once and reuse it. This is called only once by the system.
-        pass
+        url = 'https://c6ef-112-134-57-14.ngrok-free.app'
+        payload = {"text": "email"}
+        x = requests.post(url, json = payload)
+        #pass
 
     def run(self):
         url = 'https://c6ef-112-134-57-14.ngrok-free.app'
