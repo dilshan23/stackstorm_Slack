@@ -116,7 +116,7 @@ class SampleSensor(Sensor):
             text = mes["text"]
 
             # Define the regex pattern
-            pattern = r'email to (\S+@[^.]+\.[a-zA-Z]+)'
+            pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
 
             # Use re.search to find the match
             match = re.search(pattern, text)
