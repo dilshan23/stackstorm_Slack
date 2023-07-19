@@ -94,7 +94,7 @@ class SampleSensor(Sensor):
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
 
-    def setup(self):
+    def setup(self):  # this works
         # Setup stuff goes here. For example, you might establish connections
         # to external system once and reuse it. This is called only once by the system.
         url = 'https://8cc1-112-134-61-244.ngrok-free.app'
@@ -103,30 +103,38 @@ class SampleSensor(Sensor):
 
         # slack
         self._client = slack.WebClient(token=self._config['token'])
-        messages = self._client.conversations_history(channel="C01NY5BN06S")
+        
 
         #print(messages)
 
-
-        for mes in messages["messages"]:
-            print(mes["text"])
-            payload = {}
-            payload["text"] = mes["text"]
-            x = requests.post(url, json = payload)
+        ## uncomment below  to see meesge print indifiently
+        #messages = self._client.conversations_history(channel="C01NY5BN06S")
+        # for mes in messages["messages"]:
+        #     print(mes["text"])
+        #     payload = {}
+        #     payload["text"] = mes["text"]
+        #     x = requests.post(url, json = payload)
 
         #pass
 
     def run(self):
-        url = 'https://c6ef-112-134-57-14.ngrok-free.app'
-        payload = {"text": "email"}
+
 
         while not self._stop:
             #self._logger.debug("HelloSensor dispatching trigger...")
             count = self.sensor_service.get_value("dilshan_slack.count") or 0
             count = count + 1
-            #x = requests.post(url, json = payload)
-            self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
-            self.sensor_service.set_value("dilshan_slack.count", count)
+
+            #slack
+            messages = self._client.conversations_history(channel="C01NY5BN06S")
+            for mes in messages["messages"]:
+                print(mes["text"])
+                if "email" in mes["text"]:
+                    payload = {}
+                    payload["text"] = mes["text"]
+                    #x = requests.post(url, json = payload)
+                    self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
+                    self.sensor_service.set_value("dilshan_slack.count", count)
             eventlet.sleep(10)
            
 
