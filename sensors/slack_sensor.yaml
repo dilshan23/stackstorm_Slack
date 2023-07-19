@@ -9,3 +9,6 @@
       description: "Trigger which indicates that a new update has been detected"
       payload_schema:
         type: "object"
+        properties:
+          text:
+            type: "string"

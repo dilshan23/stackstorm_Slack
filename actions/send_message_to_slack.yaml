@@ -8,8 +8,8 @@
     message:
       type: "string"
       description: "message to send"
-      required: true
+      required: false
     channel_id:
       type: "string"
       description: "channel_id to post the message"
-      required: true
+      required: false

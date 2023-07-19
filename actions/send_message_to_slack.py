@@ -4,9 +4,9 @@ from st2common.runners.base_action import Action
 
 class SendMessageToSlackAction(Action):
     def run(self):
-        message = self.sensor_service.get_value('message')
+        message = self.sensor_service.get_value('text')
         client = slack.WebClient(token=self.config['token'])
-        m = client.chat_postMessage(text=message, channel=self.config['channel_id'])
+        m = client.chat_postMessage(text=text, channel=self.config['channel_id'])
         print("done sending message")
         return m
 
@@ -60,7 +60,7 @@ class SendMessageToSlackAction(Action):
     #     return last_message_timestamp
 
 
-if __name__ == '__main__':
+# if __name__ == '__main__':
     
-    bot = SendMessageToSlackAction()
-    bot.run("hi")
+#     bot = SendMessageToSlackAction()
+#     bot.run("hi")

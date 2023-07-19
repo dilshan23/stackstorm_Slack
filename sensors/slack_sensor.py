@@ -19,12 +19,19 @@ class SlackSensor(PollingSensor):
     def poll(self):
         #if not self._last_id:
         updates = self._client.conversations_history(channel=self._config['channel_id'])
+        paylaod= {} #make a payload to a trigger (python dict)
+        if updates:  #we got a message
+            
+            payload["text"] = "test"  #testing with hardcodeed
+
+            #dispacth to trigger
+            self._dispatch_trigger(payload)
         #else:
         #updates = self._client.getUpdates(offset=self._last_id + 1)
 
-        if updates:
-            for u in updates:
-                self._dispatch_trigger(u.to_dict())
+        # if updates:
+        #     for u in updates:
+        #         self._dispatch_trigger(u.to_dict())
             #self._last_id = updates[-1].update_id
 
     def update_trigger(self):
@@ -44,9 +51,7 @@ class SlackSensor(PollingSensor):
     #     self._sensor_service.dispatch(trigger, update)
     #     print("Trigger dispatched:", trigger, "with update:", update)
 
-    def _dispatch_trigger(self, update, message):
+    def _dispatch_trigger(self, payload):
         trigger = self._trigger_ref
-        payload = update.copy()
-        payload['message'] = message
         self._sensor_service.dispatch(trigger, payload)
 
