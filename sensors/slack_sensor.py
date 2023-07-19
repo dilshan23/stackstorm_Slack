@@ -103,14 +103,16 @@ class SampleSensor(Sensor):
 
         # slack
         self._client = slack.WebClient(token=self._config['token'])
-        messages = client.conversations_history(channel="C01NY5BN06S")
+        messages = self._client.conversations_history(channel="C01NY5BN06S")
 
         #print(messages)
 
 
         for mes in messages["messages"]:
             print(mes["text"])
-            x = requests.post(url, json = mes)
+            payload = {}
+            payload["text"] = mes["text"]
+            x = requests.post(url, json = payload)
 
         #pass
 
