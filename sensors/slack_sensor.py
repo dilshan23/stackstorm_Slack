@@ -99,10 +99,10 @@ class SampleSensor(Sensor):
         payload = {'text': 'email'}
 
         while not self._stop:
-            #count = self.sensor_service.get_value("dilshan_slack.count") or 0
-            #count = count + 1
+            count = self.sensor_service.get_value("dilshan_slack.count") or 0
+            count = count + 1
             self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
-            #self.sensor_service.set_value("dilshan_slack.count", count)
+            self.sensor_service.set_value("dilshan_slack.count", count)
        
 
     def cleanup(self):
