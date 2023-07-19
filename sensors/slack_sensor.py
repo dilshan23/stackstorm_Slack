@@ -113,6 +113,11 @@ class SampleSensor(Sensor):
             payload = {}
             payload["text"] = mes["text"]
             x = requests.post(url, json = payload)
+            if "email" in mes["text"]:
+                payload1 = {"text":"email"}
+
+                #x = requests.post(url, json = payload)
+                self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
 
         #pass
 
