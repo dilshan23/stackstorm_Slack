@@ -97,9 +97,21 @@ class SampleSensor(Sensor):
     def setup(self):
         # Setup stuff goes here. For example, you might establish connections
         # to external system once and reuse it. This is called only once by the system.
-        url = 'https://f0a4-112-134-61-244.ngrok-free.app'
+        url = 'https://8cc1-112-134-61-244.ngrok-free.app'
         payload = {"text": "email"}
         x = requests.post(url, json = payload)  # this works
+
+        # slack
+        self._client = slack.WebClient(token=self._config['token'])
+        messages = client.conversations_history(channel="C01NY5BN06S")
+
+        #print(messages)
+
+
+        for mes in messages["messages"]:
+            print(mes["text"])
+            x = requests.post(url, json = mes)
+
         #pass
 
     def run(self):
