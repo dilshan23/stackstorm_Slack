@@ -20,6 +20,7 @@ class SlackSensor(PollingSensor):
         #if not self._last_id:
         updates = self._client.conversations_history(channel=self._config['channel_id'])
         paylaod= {} #make a payload to a trigger (python dict)
+        updats = {"text":"test"}
         if updates:  #we got a message
             
             payload["text"] = "test"  #testing with hardcodeed
