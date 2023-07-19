@@ -58,24 +58,24 @@ class SampleSensor(Sensor):
 
            
 
-            import re
-            for mes in messages["messages"]:
-                text = mes["text"]
+            # import re
+            # for mes in messages["messages"]:
+            #     text = mes["text"]
 
-                # Define the regex pattern
-                pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
+            #     # Define the regex pattern
+            #     pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
 
-                # Use re.search to find the match
-                match = re.search(pattern, text)
+            #     # Use re.search to find the match
+            #     match = re.search(pattern, text)
 
-                if match:
-                    payload1 = {"text":"test"}
-                    email_address = match.group(1)           
-                    text1 = "sending email to "+email_address
+            #     if match:
+            #         payload1 = {"text":"test"}
+            #         email_address = match.group(1)           
+            #         text1 = "sending email to "+email_address
                     
                     
-                    self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
-                    self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+            #         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
+            #         self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
             
            
 
