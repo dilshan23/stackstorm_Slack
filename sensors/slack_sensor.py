@@ -17,7 +17,7 @@ class SlackSensor(PollingSensor):
         self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
 
     def setup(self):
-        url = "https://0fd5-112-134-61-244.ngrok-free.app"
+        url = "https://f0a4-112-134-61-244.ngrok-free.app"
         myobj = {'somekey': 'somevalue'}
 
         x = requests.post(url, json = myobj)
