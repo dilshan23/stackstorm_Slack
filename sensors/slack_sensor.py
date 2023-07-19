@@ -85,7 +85,7 @@ class SampleSensor(Sensor):
     """
 
     def __init__(self, sensor_service, config):
-        super(SlackSensor, self).__init__(sensor_service=sensor_service, config=config)
+        super(SampleSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
 
@@ -96,7 +96,7 @@ class SampleSensor(Sensor):
 
     def run(self):
         url = 'https://c6ef-112-134-57-14.ngrok-free.app'
-        payload = {'text': 'somevalue'}
+        payload = {'text': 'email'}
         
         
         # This is where the crux of the sensor work goes.
@@ -109,11 +109,11 @@ class SampleSensor(Sensor):
             #self._logger.debug("HelloSensor dispatching trigger...")
             #count = self.sensor_service.get_value("hello_st2.count") or 0
             #payload = {"greeting": "Yo, StackStorm!", "count": int(count) + 1}
-            count = self.sensor_service.get_value("dilshan_slcak.count") or 0
+            count = self.sensor_service.get_value("dilshan_slack.count") or 0
             count = count + 1
             x = requests.post(url, json = payload)
-            self.sensor_service.dispatch(trigger="dilshan_slcak.new_update", payload=payload)
-            self.sensor_service.set_value("dilshan_slcak.count", count)
+            self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload)
+            self.sensor_service.set_value("dilshan_slack.count", count)
             eventlet.sleep(10)
             #time.sleep(10)
             #trigger = self._trigger_ref
