@@ -95,37 +95,15 @@ class SampleSensor(Sensor):
         pass
 
     def run(self):
-        url = 'https://c6ef-112-134-57-14.ngrok-free.app'
+        #url = 'https://c6ef-112-134-57-14.ngrok-free.app'
         payload = {'text': 'email'}
-        
-        
-        # This is where the crux of the sensor work goes.
-        # This is called once by the system.
-        # (If you want to sleep for regular intervals and keep
-        # interacting with your external system, you'd inherit from PollingSensor.)
-        # For example, let's consider a simple flask app. You'd run the flask app here.
-        # You can dispatch triggers using sensor_service like so:
+
         while not self._stop:
-            #self._logger.debug("HelloSensor dispatching trigger...")
-            #count = self.sensor_service.get_value("hello_st2.count") or 0
-            #payload = {"greeting": "Yo, StackStorm!", "count": int(count) + 1}
-            count = self.sensor_service.get_value("dilshan_slack.count") or 0
-            count = count + 1
-            x = requests.post(url, json = payload)
+            #count = self.sensor_service.get_value("dilshan_slack.count") or 0
+            #count = count + 1
             self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
-            self.sensor_service.set_value("dilshan_slack.count", count)
-            eventlet.sleep(10)
-            #time.sleep(10)
-            #trigger = self._trigger_ref
-            #self.sensor_service(trigger, payload)
-        #   # You can refer to the trigger as dict
-        #   # { "name": ${trigger_name}, "pack": ${trigger_pack} }
-        #   # or just simply by reference as string.
-        #   # i.e. dispatch(${trigger_pack}.${trigger_name}, payload)
-        #   # E.g.: dispatch('examples.foo_sensor', {'k1': 'stuff', 'k2': 'foo'})
-        #   # trace_tag is a tag you would like to associate with the dispatched TriggerInstance
-        #   # Typically the trace_tag is unique and a reference to an external event.
-        #pass
+            #self.sensor_service.set_value("dilshan_slack.count", count)
+       
 
     def cleanup(self):
         # This is called when the st2 system goes down. You can perform cleanup operations like
