@@ -13,3 +13,36 @@ Action: The action is the piece of code that performs a specific task or operati
 
 When a sensor generates a trigger instance, the rules engine evaluates the trigger instance against the defined rules. If the trigger instance matches the criteria specified in a rule, the corresponding action(s) will be executed.
 
+
+
+
+# https://docs.stackstorm.com/webhooks.html
+Registering a Webhook
+You can register a webhook in StackStorm by specifying the core.st2.webhook trigger inside a rule definition.
+
+Here is an excerpt from a rule which registers a new webhook named sample:
+
+...
+trigger:
+        type: "core.st2.webhook"
+        parameters:
+            url: "sample"
+...
+The url: parameter above is added as a suffix to /api/v1/webhooks/ to create the URL to POST data to. So once you have created the rule above, you can use this webhook by POST-ing data to your StackStorm server at https://{$ST2_IP}/api/v1/webhooks/sample.
+
+
+
+
+## important
+Ref : https://www.device42.com/blog/2016/11/02/automating-a-workflow-with-device42s-continuous-discovery-and-stackstorm/
+st2 auth -t -p $ST2Password $ST2User   /// Ch@ngeMe  admin
+
+
+root@da374dd15114:/opt/stackstorm/st2# st2 apikey create -k
+ZWI1Y2Q0NDUyZjk1M2I2YmQyNGVjY2JkMjJiMTlkMTBhMmNkZTQ4ZWU4MDEzMmNhMGRkODkwYzEyZjI3YTQzNw
+
+
+
+https://3f5d-112-134-61-244.ngrok-free.app/api/v1/webhooks/st2
+
+ https://localhost/api/v1/webhooks/st2

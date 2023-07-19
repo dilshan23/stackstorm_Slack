@@ -13,33 +13,33 @@
 #           text:
 #             type: "string"
 
-# ---
-#   class_name: "SampleSensor"
-#   entry_point: "slack_sensor.py"
-#   description: "Sample sensor that emits triggers."
-#   trigger_types:
-#     -
-#       name: "new_update"
-#       description: "An example trigger."
-#       payload_schema:
-#         type: "object"
-#         properties:
-#           executed_at:
-#             type: "string"
-#             format: "date-time"
-#             default: "2014-07-30 05:04:24.578325"
-
-
 ---
-class_name: "SampleSensor"
-entry_point: "slack_sensor.py"
-description: "Test sensor that emits triggers."
-trigger_types:
-  -
-    name: "new_update"
-    description: "An example trigger."
-    payload_schema:
-      type: "object"
-      properties:
-        text:
-          type: "String"
+  class_name: "SampleSensor"
+  entry_point: "slack_sensor.py"
+  description: "Sample sensor that emits triggers."
+  trigger_types:
+    -
+      name: "new_update"
+      description: "An example trigger."
+      payload_schema:
+        type: "object"
+        properties:
+          executed_at:
+            type: "string"
+            format: "date-time"
+            default: "2014-07-30 05:04:24.578325"
+
+
+# ---
+# class_name: "SampleSensor"
+# entry_point: "slack_sensor.py"
+# description: "Test sensor that emits triggers."
+# trigger_types:
+#   -
+#     name: "new_update"
+#     description: "An example trigger."
+#     payload_schema:
+#       type: "object"
+#       properties:
+#         text:
+#           type: "String"
