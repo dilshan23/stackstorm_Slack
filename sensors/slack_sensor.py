@@ -7,6 +7,7 @@ class SlackSensor(PollingSensor):
         super(SlackSensor, self).__init__(sensor_service=sensor_service,
                                              config=config,
                                              poll_interval=poll_interval)
+        self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._trigger_name = 'new_update'
         self._trigger_pack = 'slack_dilshan'
         self._trigger_ref = '.'.join([self._trigger_pack, self._trigger_name])
@@ -22,6 +23,7 @@ class SlackSensor(PollingSensor):
         paylaod= {} #make a payload to a trigger (python dict)
         updats = {"text":"test"}
         if updates:  #we got a message
+            self._logger.debug("HelloSensor dispatching trigger...")
             
             payload["text"] = "test"  #testing with hardcodeed
 
