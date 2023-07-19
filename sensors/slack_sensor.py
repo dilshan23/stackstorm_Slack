@@ -129,7 +129,7 @@ class SampleSensor(Sensor):
                 email_address = match.group(1)
             
                 text1 = "sending email to "+email_address
-                if text1 not in self.processed_emails:
+                if text1 not in processed_emails:
                     processed_emails.add(text1)
 
                     #x = requests.post(url, json = payload)
