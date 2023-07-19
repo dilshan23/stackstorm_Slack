@@ -1,9 +1,9 @@
-# import slack 
-# from st2reactor.sensor.base import PollingSensor
-# import requests
-# import time
+import slack 
+from st2reactor.sensor.base import PollingSensor
+import requests
+import time
 
-# import eventlet
+import eventlet
 
 # class SlackSensor(PollingSensor):
 
