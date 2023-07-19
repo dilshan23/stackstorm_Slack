@@ -103,17 +103,16 @@ class SampleSensor(Sensor):
 
         # slack
         self._client = slack.WebClient(token=self._config['token'])
-        
+        messages = self._client.conversations_history(channel="C01NY5BN06S")
 
         #print(messages)
 
-        ## uncomment below  to see meesge print indifiently
-        #messages = self._client.conversations_history(channel="C01NY5BN06S")
-        # for mes in messages["messages"]:
-        #     print(mes["text"])
-        #     payload = {}
-        #     payload["text"] = mes["text"]
-        #     x = requests.post(url, json = payload)
+
+        for mes in messages["messages"]:
+            print(mes["text"])
+            payload = {}
+            payload["text"] = mes["text"]
+            x = requests.post(url, json = payload)
 
         #pass
 
@@ -130,12 +129,10 @@ class SampleSensor(Sensor):
             for mes in messages["messages"]:
                 print(mes["text"])
                 if "email" in mes["text"]:
-                    payload = {}
-                    payload["text"] = mes["text"]
                     #x = requests.post(url, json = payload)
                     self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
                     self.sensor_service.set_value("dilshan_slack.count", count)
-            eventlet.sleep(10)
+            eventlet.sleep(60)
            
 
     def cleanup(self):
