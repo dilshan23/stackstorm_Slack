@@ -93,6 +93,8 @@ class SampleSensor(Sensor):
         super(SampleSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self.sensor_service.get_logger(name=self.__class__.__name__)
         self._stop = False
+        self.processed_emails = set()
+
 
     def setup(self):  # this works
         # Setup stuff goes here. For example, you might establish connections
@@ -125,11 +127,13 @@ class SampleSensor(Sensor):
             #if "email to dilshan" in mes["text"]:
                 payload1 = {"text":"email"}
                 email_address = match.group(1)
-                text1 = "sending email to "+email_address
+                if email_address not in self.processed_emails:
+                    self.processed_emails.add(email_address)
+                    text1 = "sending email to "+email_address
 
-                #x = requests.post(url, json = payload)
-                self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
-                self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
+                    #x = requests.post(url, json = payload)
+                    self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+                    self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
 
         #pass
 
