@@ -54,12 +54,12 @@ class SampleSensor(Sensor):
         dispatch trigger with payload data if message received.
         """
         while True:
-            # messages = self._client.conversations_history(channel="C01NY5BN06S")
+            messages = self._client.conversations_history(channel="C01NY5BN06S")
 
            
 
             import re
-            for mes in self.messages["messages"]:
+            for mes in messages["messages"]:
                 text = mes["text"]
 
                 # Define the regex pattern
