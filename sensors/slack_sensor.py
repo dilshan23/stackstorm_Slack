@@ -124,12 +124,12 @@ class SampleSensor(Sensor):
             match = re.search(pattern, text)
 
             if match:
-            #if "email to dilshan" in mes["text"]:
                 payload1 = {"text":"email"}
                 email_address = match.group(1)
-                if email_address not in self.processed_emails:
-                    self.processed_emails.add(email_address)
-                    text1 = "sending email to "+email_address
+            
+                text1 = "sending email to "+email_address
+                if text1 not in self.processed_emails:
+                    self.processed_emails.add(text1)
 
                     #x = requests.post(url, json = payload)
                     self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
