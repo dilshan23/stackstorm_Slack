@@ -133,7 +133,7 @@ class SampleSensor(Sensor):
                     processed_emails.add(text1)
 
                     #x = requests.post(url, json = payload)
-                    self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload1,trace_tag="1234")
+                    self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
                     self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
                     
 
