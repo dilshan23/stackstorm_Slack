@@ -96,7 +96,7 @@ class SampleSensor(Sensor):
 
     def run(self):
         url = 'https://c6ef-112-134-57-14.ngrok-free.app'
-        payload = {'text': 'email'}
+        payload = {"text": "email"}
 
         while not self._stop:
             #self._logger.debug("HelloSensor dispatching trigger...")
