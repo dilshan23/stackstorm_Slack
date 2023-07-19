@@ -140,24 +140,22 @@ class SampleSensor(Sensor):
        
 
     def run(self):
+       
+        #self._logger.debug("HelloSensor dispatching trigger...")
+        count = self.sensor_service.get_value("slack_dilshan.count") or 0
+        count = count + 1
 
-
-        while not self._stop:
-            #self._logger.debug("HelloSensor dispatching trigger...")
-            count = self.sensor_service.get_value("slack_dilshan.count") or 0
-            count = count + 1
-
-            #slack
-            messages = self._client.conversations_history(channel="C01NY5BN06S")
-            for mes in messages["messages"]:
-                print(mes["text"])
-                if "email" in mes["text"]:
-                    payload = {}
-                    payload["text"] = "test"
-                    #x = requests.post(url, json = payload)
-                    self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
-                    self.sensor_service.set_value("slack_dilshan.count", count)
-            eventlet.sleep(60)
+        #slack
+        messages = self._client.conversations_history(channel="C01NY5BN06S")
+        for mes in messages["messages"]:
+            print(mes["text"])
+            if "email" in mes["text"]:
+                payload = {}
+                payload["text"] = "test"
+                #x = requests.post(url, json = payload)
+                self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
+                self.sensor_service.set_value("slack_dilshan.count", count)
+            
            
 
     def cleanup(self):
