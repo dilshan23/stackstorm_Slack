@@ -56,7 +56,7 @@ class SampleSensor(Sensor):
         while True:
             # messages = self._client.conversations_history(channel="C01NY5BN06S")
 
-            processed_emails = set()
+           
 
             import re
             for mes in self.messages["messages"]:
@@ -72,10 +72,10 @@ class SampleSensor(Sensor):
                     payload1 = {"text":"test"}
                     email_address = match.group(1)           
                     text1 = "sending email to "+email_address
-                    if text1 not in processed_emails:
-                        processed_emails.add(text1)
-                        self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
-                        self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+                    
+                    
+                    self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
+                    self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
             
            
 
