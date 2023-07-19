@@ -52,28 +52,29 @@ class SampleSensor(Sensor):
         Run infinite loop, continuously reading for Slack Messages,
         dispatch trigger with payload data if message received.
         """
-        messages = self._client.conversations_history(channel="C01NY5BN06S")
+        while True:
+            messages = self._client.conversations_history(channel="C01NY5BN06S")
 
-        processed_emails = set()
+            processed_emails = set()
 
-        import re
-        for mes in messages["messages"]:
-            text = mes["text"]
+            import re
+            for mes in messages["messages"]:
+                text = mes["text"]
 
-            # Define the regex pattern
-            pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
+                # Define the regex pattern
+                pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
 
-            # Use re.search to find the match
-            match = re.search(pattern, text)
+                # Use re.search to find the match
+                match = re.search(pattern, text)
 
-            if match:
-                payload1 = {"text":"test"}
-                email_address = match.group(1)           
-                text1 = "sending email to "+email_address
-                if text1 not in processed_emails:
-                    processed_emails.add(text1)
-                    self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
-                    self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+                if match:
+                    payload1 = {"text":"test"}
+                    email_address = match.group(1)           
+                    text1 = "sending email to "+email_address
+                    if text1 not in processed_emails:
+                        processed_emails.add(text1)
+                        self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
+                        self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
             
            
 
