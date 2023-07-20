@@ -40,7 +40,6 @@ class SlackSensor(Sensor):
                     match = re.search(pattern, text)
                     if match:
                         email_address = match.group(1)           
-                        text1 = "sending email to "+email_address
                         payload = {}
                         payload["text"] = email_address         
                         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
