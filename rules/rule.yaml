@@ -8,7 +8,7 @@ trigger:
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "email"
+    pattern: "yahoo"
 action:
   ref: core.local
   parameters:
