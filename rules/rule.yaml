@@ -28,8 +28,5 @@ criteria:
     pattern: "yahoo"
 action:
   ref: "slack_dilshan.send_message"
-  # parameters:
-  #   user: "{{trigger.user.name}}"
-  #   text: "{{trigger.text}}"
-  #   channel: "{{trigger.channel.name}}"
-  #   timestamp: "{{trigger.timestamp_raw}}"
+  parameters:
+    text: "{{trigger.text}}"

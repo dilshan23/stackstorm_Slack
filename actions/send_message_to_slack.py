@@ -6,5 +6,5 @@ class SendMessageToSlackAction(Action):
         #payload = self.config.get('new_update', {})
         #message = payload["text"]
         client = slack.WebClient(token=self.config['token'])
-        m = client.chat_postMessage(text="testing", channel=self.config['channel_id'])
+        m = client.chat_postMessage(text="sent email to" +text, channel=self.config['channel_id'])
         return m
