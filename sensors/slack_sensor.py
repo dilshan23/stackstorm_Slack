@@ -35,6 +35,8 @@ class SampleSensor(Sensor):
         for mes in messages["messages"]:
             text = mes["text"]
 
+            self._client.chat_postMessage(text=text, channel="C01NY5BN06S")
+
             # Define the regex pattern
             pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
 
