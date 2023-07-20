@@ -42,4 +42,4 @@ trigger_types:
       type: "object"
       properties:
         text:
-          type: "String"
+          type: "string"
