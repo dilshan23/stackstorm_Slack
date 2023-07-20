@@ -1,0 +1,15 @@
+---
+  name: "send_email"
+  runner_type: "python-script"
+  description: "send a message to a channel"
+  enabled: true
+  entry_point: "send_email.py"
+  parameters:
+    receiver_email:
+      type: "string"
+      description: "recevier's email"
+      required: true
+    # channel_id:
+    #   type: "string"
+    #   description: "channel_id to post the message"
+    #   required: false
