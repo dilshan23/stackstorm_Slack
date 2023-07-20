@@ -34,7 +34,7 @@ class SampleSensor(Sensor):
             if mes["text"] not in processed_messages:
                 text = mes["text"]
 
-                #self._client.chat_postMessage(text=text, channel="C01NY5BN06S")
+                self._client.chat_postMessage(text=text, channel="C01NY5BN06S")
 
                 # Define the regex pattern
                 pattern = r'mailto(\S+@[^.]+\.[a-zA-Z]+)'
