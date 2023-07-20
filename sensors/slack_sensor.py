@@ -44,7 +44,7 @@ class SlackSensor(Sensor):
                         payload = {}
                         payload["text"] = email_address         
                         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
-                        self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+                        #self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
                         processed_messages.append(mes["text"])
 
             time.sleep(10)
