@@ -16,17 +16,4 @@ When a sensor generates a trigger instance, the rules engine evaluates the trigg
 
 
 
-# Registering a Webhook
-You can register a webhook in StackStorm by specifying the core.st2.webhook trigger inside a rule definition.
-
-Here is an excerpt from a rule which registers a new webhook named sample:
-
-...
-trigger:
-        type: "core.st2.webhook"
-        parameters:
-            url: "sample"
-...
-The url: parameter above is added as a suffix to /api/v1/webhooks/ to create the URL to POST data to. So once you have created the rule above, you can use this webhook by POST-ing data to your StackStorm server at https://{$ST2_IP}/api/v1/webhooks/sample.
-
 
