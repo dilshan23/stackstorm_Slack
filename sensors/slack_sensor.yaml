@@ -2,7 +2,7 @@
   class_name: "SlackPollSensor"
   entry_point: "slack_sensor.py"
   description: "Sensor which monitors slack updates"
-  poll_interval: 5
+  poll_interval: 60
   trigger_types:
     -
       name: "new_update"
