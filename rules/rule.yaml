@@ -8,9 +8,10 @@ trigger:
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "test"
+    pattern: "email"
 action:
   ref: core.local
   parameters:
-    cmd: "echo {{ trigger.message.attributes[0].attributeName }}: {{ trigger.message.attributes[0].attributeValue }}"
+    cmd: "echo trigger" 
+    #cmd: "echo {{ trigger.message.attributes[0].attributeName }}: {{ trigger.message.attributes[0].attributeValue }}"
  

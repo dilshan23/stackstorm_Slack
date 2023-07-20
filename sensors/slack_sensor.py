@@ -58,7 +58,7 @@ class SlackSensor(Sensor):
             count = self.sensor_service.get_value("dilshan_slack.count") or 0
             count = count + 1  
             payload = {}
-            payload["text"] = "sampleemil@email.com"       
+            payload["text"] = "email to "       
             self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
             self.sensor_service.set_value("dilshan_slack.count", count)
             eventlet.sleep(10)
