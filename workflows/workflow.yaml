@@ -1,15 +1,9 @@
 version: 1.0  # work in progress
 
-description:A workflow consists of reading Slack message  ,send an email and respond back to slack
+description: A workflow consists of reading Slack message  ,send an email and respond back to slack
 
 input:
-  - name
-
-vars:
-  - greeting: null
-
-output:
-  - greeting: <% ctx().greeting %>
+  - slack_message: null  # Input parameter to receive the Slack message
 
 tasks:
   task1:
