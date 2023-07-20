@@ -28,10 +28,11 @@ class SlackSensor(Sensor):
         # to external system once and reuse it. This is called only once by the system.
 
         self._client = slack.WebClient(token=self._config['token'])
+        self.messages = self._client.conversations_history(channel="C01NY5BN06S")
         
         processed_messages = []  # important ... this needs to move to caching
         while True:
-            messages = self._client.conversations_history(channel=self._config['channel_id'])
+            messages = self._client.conversations_history(channel="C01NY5BN06S")
             for mes in messages["messages"]:
                 if mes["text"] not in processed_messages:
                     text = mes["text"]
@@ -41,7 +42,7 @@ class SlackSensor(Sensor):
                         email_address = match.group(1)           
                         text1 = "sending email to "+email_address         
                         #self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
-                        self._client.chat_postMessage(text=text1, self._config['channel_id'])
+                        self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
                         processed_messages.append(mes["text"])
 
             time.sleep(10)
