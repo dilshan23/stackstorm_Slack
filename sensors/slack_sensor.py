@@ -102,7 +102,7 @@ class SlackPollSensor(PollingSensor):
 
     def poll(self):
        
-        updates = self._client.conversations_history(channel=self._config['channel_id'])
+        updates = self._client.conversations_history(channel="C01NY5BN06S")
         paylaod= {} #make a payload to a trigger (python dict)
         updates = {"text":"test"}
         if updates:  #we got a message
