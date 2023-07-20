@@ -1,6 +1,7 @@
 import slack 
 from st2reactor.sensor.base import PollingSensor
 from st2reactor.sensor.base import Sensor
+import eventlet
 
 
 class SampleSensor(Sensor):
@@ -17,6 +18,7 @@ class SampleSensor(Sensor):
     def __init__(self, sensor_service, config):
         super(SampleSensor, self).__init__(sensor_service=sensor_service, config=config)
         self._logger = self._sensor_service.get_logger(__name__)
+        self._stop = False
 
 
     def setup(self): 
@@ -53,29 +55,17 @@ class SampleSensor(Sensor):
         Run infinite loop, continuously reading for Slack Messages,
         dispatch trigger with payload data if message received.
         """
-        while True:
-            messages = self._client.conversations_history(channel="C01NY5BN06S")
+        url = 'https://c6ef-112-134-57-14.ngrok-free.app'
+        payload = {"text": "email"}
 
-           
-
-            # import re
-            # for mes in messages["messages"]:
-            #     text = mes["text"]
-
-            #     # Define the regex pattern
-            #     pattern = r'bot email to (\S+@[^.]+\.[a-zA-Z]+)'
-
-            #     # Use re.search to find the match
-            #     match = re.search(pattern, text)
-
-            #     if match:
-            #         payload1 = {"text":"test"}
-            #         email_address = match.group(1)           
-            #         text1 = "sending email to "+email_address
-                    
-                    
-            #         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload1,trace_tag="1234")
-            #         self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+        while not self._stop:
+            #self._logger.debug("HelloSensor dispatching trigger...")
+            count = self.sensor_service.get_value("dilshan_slack.count") or 0
+            count = count + 1
+            #x = requests.post(url, json = payload)
+            self.sensor_service.dispatch(trigger="dilshan_slack.new_update", payload=payload,trace_tag="1234")
+            self.sensor_service.set_value("dilshan_slack.count", count)
+            eventlet.sleep(10)
             
            
 
