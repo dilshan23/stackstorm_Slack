@@ -1,0 +1,13 @@
+#work in progress
+
+name: orquesta-sequential
+pack: slack_dilshan
+description: A basic sequential workflow.
+runner_type: orquesta
+entry_point: workflows/orquesta-sequential.yaml
+enabled: true
+parameters:
+  text:
+    required: true
+    type: string
+  

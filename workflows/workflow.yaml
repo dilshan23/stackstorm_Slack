@@ -1,0 +1,30 @@
+version: 1.0  # work in progress
+
+description:A workflow consists of reading Slack message  ,send an email and respond back to slack
+
+input:
+  - name
+
+vars:
+  - greeting: null
+
+output:
+  - greeting: <% ctx().greeting %>
+
+tasks:
+  task1:
+    action: slack_dilshan.send_email
+    next:
+      - when: <% succeeded() %>
+        publish: greeting=<% result().stdout %>
+        do: task2
+  task2:
+    action: slack_dilshan.send_message_to_slack
+    input:
+      message: "All your base are belong to us!"
+    next:
+      - when: <% succeeded() %>
+        publish:
+          - greeting: <% ctx("greeting") %>, <% result().stdout %>
+ 
+  
