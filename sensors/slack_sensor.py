@@ -31,23 +31,23 @@ class SlackSensor(Sensor):
         self.messages = self._client.conversations_history(channel="C01NY5BN06S")
         
         processed_messages = []  # important ... this needs to move to caching
-        while True:
-            messages = self._client.conversations_history(channel="C01NY5BN06S")
-            for mes in messages["messages"]:
-                if mes["text"] not in processed_messages:
-                    text = mes["text"]
-                    pattern = r'mailto(\S+@[^.]+\.[a-zA-Z]+)'
-                    match = re.search(pattern, text)
-                    if match:
-                        email_address = match.group(1)           
-                        text1 = "sending email to "+email_address
-                        payload = {}
-                        payload["text"] = email_address         
-                        self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
-                        self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
-                        processed_messages.append(mes["text"])
+        # while True:
+        #     messages = self._client.conversations_history(channel="C01NY5BN06S")
+        #     for mes in messages["messages"]:
+        #         if mes["text"] not in processed_messages:
+        #             text = mes["text"]
+        #             pattern = r'mailto(\S+@[^.]+\.[a-zA-Z]+)'
+        #             match = re.search(pattern, text)
+        #             if match:
+        #                 email_address = match.group(1)           
+        #                 text1 = "sending email to "+email_address
+        #                 payload = {}
+        #                 payload["text"] = email_address         
+        #                 self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
+        #                 self._client.chat_postMessage(text=text1, channel="C01NY5BN06S")
+        #                 processed_messages.append(mes["text"])
 
-            time.sleep(10)
+        #     time.sleep(10)
                     
     def run(self):
         """
