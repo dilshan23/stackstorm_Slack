@@ -27,7 +27,7 @@ class SendMessageToSlackAction(Action):
 		# except Exception as e:
 		#     print("Error sending email:", str(e))
 
-		with smtplib.SMTP('mail.privateemail.com', 589 ) as server:
+		with smtplib.SMTP('mail.privateemail.com', 587 ) as server:
 				server.starttls()        
 				server.login(sender_email, sender_password)
 				server.sendmail(sender_email, receiver_email, msg.as_string())
