@@ -33,3 +33,5 @@ action:
   - ref: "slack_dilshan.send_email"  
     parameters:
       receiver_email: "{{trigger.text}}" 
+
+
