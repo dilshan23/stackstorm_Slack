@@ -8,7 +8,7 @@ trigger:
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "yahoo"
+    pattern: "gmail"
 action:
   #ref: "slack_dilshan.send_message"
   ref: "slack_dilshan.sequential_slack"
