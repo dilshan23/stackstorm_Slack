@@ -15,7 +15,7 @@ tasks:
   task2:
     action: slack_dilshan.send_message_to_slack
     input:
-      message: "All your base are belong to us!"
+      message: ""
     next:
       - when: <% succeeded() %>
         publish:
