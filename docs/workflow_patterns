@@ -15,7 +15,8 @@ tasks:
     action: core.noop
     next:
       - when: <% succeeded() %>
-        do: task2, task4, task6, task8
+        do: email, sms, whatsapp
+
 
   # branch 1
   task2:
@@ -74,7 +75,7 @@ tasks:
   # converge branches
   task10:
     join: all
-    action: core.noop
+    action: slack_message
 
 output:
   - messages:
