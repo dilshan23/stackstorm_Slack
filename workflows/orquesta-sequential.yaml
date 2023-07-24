@@ -1,4 +1,4 @@
-version: 1.0  # work in progress
+version: 1.0 
 
 description: "Workflow to Send Email and Slack Message"
 
