@@ -12,11 +12,23 @@ tasks:
   send_email:
     action: slack_dilshan.send_email
     input:
-      receiver_email: <% ctx().receiver_email %>
+      schema:
+        type: object
+        properties:
+          receiver_email:
+            type: "string"
+            description: "receiver_email"
+            required: true
+      
      
   send_slack_message:
     action: slack_dilshan.send_message
-    input:
-      text: <% ctx().receiver_email %>
+    schema:
+        type: object
+        properties:
+          receiver_email:
+            type: "string"
+            description: "slack_message"
+            required: true
     
   
