@@ -29,7 +29,7 @@ tasks:
   send_whatsapp:
     action: slack_dilshan.send_whatsapp
     input:
-       receiver_whatsapp: <% ctx().send_whatsapp %>
+       receiver_whatsapp: <% ctx().receiver_whatsapp_number %>
     next:
       - when: <% succeeded() %>
         do: barrier_task
@@ -37,7 +37,7 @@ tasks:
   send_sms:
     action: slack_dilshan.send_sms
     input:
-       receiver_sms: <% ctx().send_sms %>
+       receiver_sms: <% ctx().receiver_sms %>
     next:
       - when: <% succeeded() %>
         do: barrier_task
