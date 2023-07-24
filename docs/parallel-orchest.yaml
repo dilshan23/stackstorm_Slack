@@ -1,0 +1,20 @@
+---
+name: sequential_slack
+pack: slack_dilshan
+description: slack workflow.
+runner_type: orquesta
+entry_point: workflows/orquesta-sequential.yaml
+enabled: true
+parameters:
+  receiver_email:
+    required: true
+    type: string
+    default: "dukelupin@gmail.com"
+  receiver_whatsapp:
+    required: true
+    type: string
+    default: "+9733333"
+  receiver_sms:
+    required: true
+    type: string
+    default: "+93322332232332"
