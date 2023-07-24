@@ -3,7 +3,12 @@ version: 1.0
 description: "Workflow to Send Email and Slack Message"
 
 input:
-  - receiver_email: "dukelupin@gmail.com"   # Defaults to value of d... if input is not provided.
+  #- receiver_email: "dukelupin@gmail.com"   # Defaults to value of d... if input is not provided.
+  type: object
+  properties:
+    receiver_email:
+      type: string
+      description: "Receiver's email"
     
 tasks:
   send_email:
