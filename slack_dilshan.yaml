@@ -1,9 +1,8 @@
 ---
-token: "secret token"
-channel_id: "channel id"
-sender_email: "sender email"
-sender_email_password: "sender email password"
-body: "email body"
-subject: "subject"
-
+token: "xoxb-1799553407105-5588872525636-dUxr0jQ7Axbdpvyh9XwFKbdk"
+channel_id: "C01NY5BN06S"
+sender_email = 'udara@theravanproject.online'
+sender_password = 'ravan223'
+subject = 'Phase 3 discussion'
+body = 'Shall we discuass what to do in phase 2..we need to add employe'
 
