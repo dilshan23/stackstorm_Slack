@@ -43,7 +43,7 @@ trigger_types:
       properties:
         email:
           type: "string"
-        whatsapp_number
+        whatsapp_number:
           type: "string"
-        sms_number
+        sms_number:
           type: "string"

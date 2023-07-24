@@ -9,7 +9,7 @@ parameters:
   receiver_email:
     required: true
     type: string
-    default: dukelupin@gmail.com
+    default: "dukelupin@gmail.com"
   receiver_whatsapp:
     required: true
     type: string
