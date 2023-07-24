@@ -14,10 +14,10 @@ tasks:
     #   - when: <% succeeded() %>
     #     do: send_slack_message
          
-  send_slack_message:
-    action: slack_dilshan.send_message
-    input:
-      text: <% ctx().receiver_email %>
+  # send_slack_message:
+  #   action: slack_dilshan.send_message
+  #   input:
+  #     text: <% ctx().receiver_email %>
      
     
   
