@@ -30,5 +30,6 @@ action:
   #ref: "slack_dilshan.send_message"
   ref: "slack_dilshan.orquesta-sequential"
   parameters:
-    text: "{{trigger.text}}"
+    #text: "{{trigger.text}}"
+    receiver_email: "{{trigger.text}}"
   
