@@ -12,7 +12,7 @@ tasks:
        receiver_email: <% ctx().receiver_email %>
     next:
       - when: <% succeeded() %>
-        do: slack_slck_message
+        do: send_slack_message
          
   send_slack_message:
     action: slack_dilshan.send_message
