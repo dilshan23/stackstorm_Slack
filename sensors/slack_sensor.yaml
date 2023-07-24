@@ -41,5 +41,9 @@ trigger_types:
     payload_schema:
       type: "object"
       properties:
-        text:
+        email:
+          type: "string"
+        whatsapp_number
+          type: "string"
+        sms_number
           type: "string"

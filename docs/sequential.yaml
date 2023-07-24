@@ -1,0 +1,20 @@
+version: 1.0 
+
+description: "Workflow to Send Email and Slack Message"
+
+input:
+  - receiver_email: "dukelupin@gmail.com"   # Defaults to value of d... if input is not provided.
+  
+tasks:
+  send_email:
+    action: slack_dilshan.send_email
+    input:
+       receiver_email: <% ctx().receiver_email %>
+    next:
+      - when: <% succeeded() %>
+        do: send_slack_message
+         
+  send_slack_message:
+    action: slack_dilshan.send_message
+    input:
+      text: <% ctx().receiver_email %>

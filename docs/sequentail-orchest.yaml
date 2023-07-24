@@ -10,11 +10,3 @@ parameters:
     required: true
     type: string
     default: dukelupin@gmail.com
-  receiver_whatsapp:
-    required: true
-    type: string
-    default: "+9733333"
-  receiver_sms:
-    required: true
-    type: string
-    default: "+93322332232332"

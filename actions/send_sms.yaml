@@ -1,0 +1,11 @@
+---
+  name: "send_sms"
+  runner_type: "python-script"
+  description: "send sms"
+  enabled: true
+  entry_point: "send_sms.py"
+  parameters:
+    sms_number:
+      type: "string"
+      description: "sms_number"
+      required: false

@@ -6,7 +6,7 @@ trigger:
   type: "slack_dilshan.new_update"
   parameters: {}
 criteria:
-  trigger.text:
+  trigger.email:
     type: "contains"
     pattern: "gmail"
 action:
@@ -14,5 +14,8 @@ action:
   ref: "slack_dilshan.sequential_slack"
   parameters:
     #text: "{{trigger.text}}"
-    receiver_email: "{{trigger.text}}"
+    receiver_email: "{{trigger.email}}"
+    receiver_whatsapp_number: "{{trigger.whatsapp_number}}"
+    receiver_sms: "{{trigger.sms_number}}"
+
   

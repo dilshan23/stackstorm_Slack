@@ -1,0 +1,11 @@
+---
+  name: "send_whatsapp"
+  runner_type: "python-script"
+  description: "send an whatsapp"
+  enabled: true
+  entry_point: "send_whatsapp.py"
+  parameters:
+    whatsapp_number:
+      type: "string"
+      description: "whatsapp_number"
+      required: false
