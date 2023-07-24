@@ -3,7 +3,7 @@ version: 1.0
 description: "Workflow to Send Email and Slack Message"
 
 input:
-  - receiver_email
+  - receiver_email: "dukelupin@gmail.com"   # Defaults to value of 0 if input is not provided.
     
 tasks:
   send_email:
