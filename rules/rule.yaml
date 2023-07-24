@@ -1,20 +1,3 @@
-# name: "slack_respond_to_email_send"
-# pack: "slack_dilshan"
-# description: "This rule scans the Slack for email send instructions, sends an email, and responds back to the channel"
-# enabled: true
-# trigger:
-#   type: "slack_dilshan.new_update"
-#   parameters: {}
-# criteria:
-#   trigger.text:
-#     type: "contains"
-#     pattern: "yahoo"
-# action:
-#   ref: core.local
-#   parameters:
-#     cmd: "echo trigger"    # this works
-#     #cmd: "echo {{ trigger.message.attributes[0].attributeName }}: {{ trigger.message.attributes[0].attributeValue }}"
- 
 name: "slack_respond_to_email_send"
 pack: "slack_dilshan"
 description: "This rule scans the Slack for email send instructions ,send an email and respond back to channel"
