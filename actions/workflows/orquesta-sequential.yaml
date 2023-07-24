@@ -3,33 +3,18 @@ version: 1.0
 description: "Workflow to Send Email and Slack Message"
 
 input:
-  receiver_email:
-    type: "string"
-    description: "receiver's email"
-    required: true
-
+  - receiver_email
+    
 tasks:
   send_email:
     action: slack_dilshan.send_email
     input:
-      schema:
-        type: object
-        properties:
-          receiver_email:
-            type: "string"
-            description: "receiver_email"
-            required: true
-      
-     
+       receiver_email: <% ctx().receiver_email %>
+         
   send_slack_message:
     action: slack_dilshan.send_message
     input:
-      schema:
-          type: object
-          properties:
-            text:
-              type: "string"
-              description: "slack_message"
-              required: true
+      text: <% ctx().receiver_email %>
+     
     
   
