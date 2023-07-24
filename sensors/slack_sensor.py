@@ -41,7 +41,7 @@ class SlackSensor(Sensor):
                     if match:
                         email_address = match.group(1)           
                         payload = {}
-                        payload["text"] = email_address         
+                        payload["text"] = email_address.split('|')[0]        
                         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
                         processed_messages.append(mes["text"])
 

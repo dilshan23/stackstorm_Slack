@@ -4,7 +4,7 @@ description: "Workflow to Send Email and Slack Message"
 
 input:
   - receiver_email: "dukelupin@gmail.com"   # Defaults to value of d... if input is not provided.
-    
+  
 tasks:
   send_email:
     action: slack_dilshan.send_email
