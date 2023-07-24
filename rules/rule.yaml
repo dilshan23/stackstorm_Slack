@@ -25,7 +25,7 @@ trigger:
 criteria:
   trigger.text:
     type: "contains"
-    pattern: "yahoo"
+    pattern: "gmail"
 action:
   ref: "slack_dilshan.send_message"
   parameters:
