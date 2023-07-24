@@ -23,12 +23,13 @@ tasks:
      
   send_slack_message:
     action: slack_dilshan.send_message
-    schema:
-        type: object
-        properties:
-          receiver_email:
-            type: "string"
-            description: "slack_message"
-            required: true
+    input:
+      schema:
+          type: object
+          properties:
+            text:
+              type: "string"
+              description: "slack_message"
+              required: true
     
   
