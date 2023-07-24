@@ -1,8 +1,8 @@
 ---
-token: ""
-channel_id: ""
-sender_email = ''
-sender_password = ''
-subject = ''
-body = ''
+token: "token"
+channel_id: "channel_id"
+sender_email: "email"
+sender_password: "pass"
+subject: "subject"
+body: "body"
 

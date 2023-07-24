@@ -1,24 +1,22 @@
 version: 1.0  # work in progress
 
-description: A workflow consists of reading Slack message  ,send an email and respond back to slack
+description: "Workflow to Send Email and Slack Message"
 
 input:
-  - slack_message: null  # Input parameter to receive the Slack message
+  receiver_email:
+    type: "string"
+    description: "receiver's email"
+    required: true
 
 tasks:
-  task1:
+  send_email:
     action: slack_dilshan.send_email
-    next:
-      - when: <% succeeded() %>
-        publish: greeting=<% result().stdout %>
-        do: task2
-  task2:
+    input:
+      receiver_email: <% ctx().receiver_email %>
+     
+  send_slack_message:
     action: slack_dilshan.send_message_to_slack
     input:
-      message: ""
-    next:
-      - when: <% succeeded() %>
-        publish:
-          - greeting: <% ctx("greeting") %>, <% result().stdout %>
- 
+      text: <% ctx().receiver_email %>
+    
   
