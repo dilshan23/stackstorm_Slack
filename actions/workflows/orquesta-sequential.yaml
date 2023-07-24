@@ -10,6 +10,9 @@ tasks:
     action: slack_dilshan.send_email
     input:
        receiver_email: <% ctx().receiver_email %>
+    next:
+      - when: <% succeeded() %>
+        do: slack_slck_message
          
   send_slack_message:
     action: slack_dilshan.send_message
