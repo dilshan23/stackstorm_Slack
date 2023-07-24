@@ -9,7 +9,7 @@ class SendWhatsapp(Action):
 	# creates SMTP session
 	def run(self,receiver_whatsapp_number):
 
-		print("sent")
+		print("sent whatsapp")
 
 		
 	            

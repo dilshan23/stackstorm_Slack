@@ -3,16 +3,16 @@ description: "Workflow to Send Email,Whatsaap,Sms and  finally respond back to S
 
 input:
   - receiver_email: "dukelupin@gmail.com"
-  # - receiver_whatsapp_number: "+9677773333"
+  - receiver_whatsapp_number: "+9677773333"
   - receiver_sms: "+9677773333"
 
 
 tasks:
   setup_task:
     next:
-      - do:
+      - do: #parallel tasks
           - send_email          
-          # - send_whatsapp           
+          - send_whatsapp           
           - send_sms
              
 
@@ -24,13 +24,13 @@ tasks:
       - when: <% succeeded() %>
         do: barrier_task
 
-  # send_whatsapp:
-  #   action: slack_dilshan.send_whatsapp
-  #   input:
-  #      receiver_whatsapp: <% ctx().receiver_whatsapp_number %>
-  #   next:
-  #     - when: <% succeeded() %>
-  #       do: barrier_task
+  send_whatsapp:
+    action: slack_dilshan.send_whatsapp
+    input:
+       receiver_whatsapp_number: <% ctx().receiver_whatsapp_number %>
+    next:
+      - when: <% succeeded() %>
+        do: barrier_task
 
   send_sms:
     action: slack_dilshan.send_sms

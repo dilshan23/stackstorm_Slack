@@ -9,4 +9,4 @@ class SendSms(Action):
 	# creates SMTP session
 	def run(self,receiver_sms):
 
-		print("sent")
+		print("sent sms")
