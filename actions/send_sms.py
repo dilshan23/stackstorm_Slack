@@ -7,6 +7,6 @@ from email.mime.multipart import MIMEMultipart
 
 class SendSms(Action):
 	# creates SMTP session
-	def run(self,sms_number):
+	def run(self,receiver_sms):
 
 		print("sent")

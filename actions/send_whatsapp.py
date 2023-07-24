@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 
 class SendWhatsapp(Action):
 	# creates SMTP session
-	def run(self,whatsapp_number):
+	def run(self,receiver_whatsapp_number):
 
 		print("sent")
 
