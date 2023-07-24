@@ -6,7 +6,7 @@ import re
 import time
 
 
-processed_messages = []  # important ... this needs to move to caching
+#processed_messages = []  # important ... this needs to move to caching
 
 class SlackSensor(Sensor):
     """
@@ -32,7 +32,7 @@ class SlackSensor(Sensor):
         self._client = slack.WebClient(token=self._config['token'])
         self.messages = self._client.conversations_history(channel="C01NY5BN06S")
         
-        #processed_messages = []  # important ... this needs to move to caching
+        processed_messages = []  # important ... this needs to move to caching
         while True:
             messages = self._client.conversations_history(channel="C01NY5BN06S")
             for mes in messages["messages"]:
