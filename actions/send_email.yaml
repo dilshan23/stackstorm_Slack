@@ -8,5 +8,5 @@
     receiver_email:
       type: "string"
       description: "recevier's email"
-      required: true
+      required: false
     

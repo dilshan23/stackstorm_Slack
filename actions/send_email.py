@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 
 class SendMessageToSlackAction(Action):
 	# creates SMTP session
-	def run(self,receiver_email):
+	def run(self,receiver_email="testst2@yahoo.com"):
 
 		sender_email=self.config['sender_email']
 		sender_password = self.config['sender_password']
