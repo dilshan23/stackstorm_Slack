@@ -27,6 +27,9 @@ criteria:
     type: "contains"
     pattern: "yahoo"
 action:
-  ref: "slack_dilshan.send_message"
-  parameters:
-    text: "{{trigger.text}}"
+  - ref: "slack_dilshan.send_message"
+    parameters:
+      text: "{{trigger.text}}"
+  - ref: "slack_dilshan.send_email"  
+    parameters:
+      receiver_email: "{{trigger.text}}" 
