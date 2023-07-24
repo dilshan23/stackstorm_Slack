@@ -5,6 +5,8 @@ sudo docker-compose exec st2client bash
 #stop st2
 sudo docker-compose stop
 
+st2 pack remove slack_dilshan
+
 ###edit and move
 
 nano packs/slack_dilshan/slack_dilshan.yaml
