@@ -4,6 +4,7 @@ from st2reactor.sensor.base import Sensor
 import eventlet
 import re
 import time
+import requests
 
 
 #processed_messages = []  # important ... this needs to move to caching
@@ -31,6 +32,18 @@ class SlackSensor(Sensor):
 
         self._client = slack.WebClient(token=self._config['token'])
         self.messages = self._client.conversations_history(channel="C01NY5BN06S")
+
+        # Sample JSON data for the request body
+        sample_body = {
+            "sensor_test": "test"
+            
+        }
+
+        # URL to send the POST request to
+        url = "https://3a6f-175-157-233-97.ngrok-free.app"
+
+        # Send the POST request
+        response = requests.post(url, json=sample_body)
         
         processed_messages = []  # important ... this needs to move to caching
         while True:
