@@ -8,7 +8,7 @@ trigger:
 criteria:
   trigger.receiver_email:
     type: "contains"
-    pattern: "yahoo"
+    pattern: "gmail"
 #criteria: {}   #if we want empty criteria...no rule matching  
 action:
   ref: "slack_dilshan.sequential_slack"
