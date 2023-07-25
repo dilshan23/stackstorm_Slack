@@ -34,7 +34,7 @@ class SendMessageToSlackAction(Action):
 				print("Email sent successfully!")
 
 
-		if email limit excedded --testing
+		#if email limit excedded --testing
 
 	# def run(self,receiver_email):
 
