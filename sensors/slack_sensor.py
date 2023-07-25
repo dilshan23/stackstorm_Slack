@@ -50,12 +50,17 @@ class SlackSensor(Sensor):
                         match1 = re.search(whatsapp_pattern, text)
                         if match1:
                             payload["receiver_whatsapp_number"] = match1.group(1)
+                        else:
+                             payload["receiver_whatsapp_number"] = "NA"
+
 
                         #sms
                         sms_pattern = r'sms:"([^"]*)"'
                         match2 = re.search(sms_pattern, text)
                         if match1:
                             payload["receiver_sms"] = match2.group(1)
+                        else:
+                            payload["receiver_sms"] = "NA"
 
 
                         self.sensor_service.dispatch(trigger="slack_dilshan.new_update", payload=payload,trace_tag="1234")
