@@ -57,7 +57,7 @@ class SlackSensor(Sensor):
                         #sms
                         sms_pattern = r'sms:"([^"]*)"'
                         match2 = re.search(sms_pattern, text)
-                        if match1:
+                        if match2:
                             payload["receiver_sms"] = match2.group(1)
                         else:
                             payload["receiver_sms"] = "NA"
