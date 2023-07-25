@@ -7,7 +7,7 @@ class SendMessageToSlackAction(Action):
             text = "sent email to " + text
         else:
             text = "email is None"  # Or some default message if text is None
-        text = text+whatsapp_status
+        text = text+whatsapp_output
         client = slack.WebClient(token=self.config['token'])
         m = client.chat_postMessage(text=text, channel=self.config['channel_id'])
         return m
