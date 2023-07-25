@@ -5,6 +5,7 @@ input:
   - receiver_email: "test@gmail.com"
   - receiver_whatsapp_number: "+9677773333"
   - receiver_sms: "+9677773333"
+  - whatsapp_output: "whatsapp ok"
 
 vars:
   - email_output: ""
@@ -52,7 +53,7 @@ tasks:
     action: slack_dilshan.send_message
     input:
       text: <% ctx().receiver_email %>
-      whatsapp_output: "{{ ctx('whatsapp_output') }}"  
+      whatsapp_output: <% ctx().whatsapp_output %>    #VariableUndefinedError: The variable \"whatsapp_output\" is undefined."
 
 output:
   - whatsapp_output: "{{ ctx('whatsapp_output') }}"
