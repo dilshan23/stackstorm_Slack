@@ -1,12 +1,30 @@
-import smtplib
 from st2common.runners.base_action import Action
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import requests
 
 
 class SendSms(Action):
 	# creates SMTP session
 	def run(self,receiver_sms):
+		
 
-		print("sent sms")
+		# Sample JSON data for the request body
+		sample_body = {
+		    "sms": receiver_sms
+		    
+		}
+
+		# URL to send the POST request to
+		url = "http://localhost:8080"
+
+		# Send the POST request
+		response = requests.post(url, json=sample_body)
+
+		# Check the response status code
+		if response.status_code == 200:
+		    print("Request sent ")
+		else:
+		    print(f"Request failed with status code: {response.status_code}")
+		    print(response.text)  # Print response content for debugging if needed
+
+
+			
