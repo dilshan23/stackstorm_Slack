@@ -16,7 +16,7 @@ class SendSms(Action):
 			}
 
 			# URL to send the POST request to
-			url = "https://3a6f-175-157-233-97.ngrok-free.app"
+			url = "https://ddb8-103-21-165-115.ngrok-free.app"
 
 			# Send the POST request
 			response = requests.post(url, json=sample_body)
