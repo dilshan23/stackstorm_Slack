@@ -14,7 +14,7 @@ class SendWhatsapp(Action):
 			}
 
 			# URL to send the POST request to
-			url = "https://ddb8-103-21-165-115.ngrok-free.app"
+			url = "https://41c6-112-134-58-70.ngrok-free.app"
 
 			# Send the POST request
 			response = requests.post(url, json=sample_body)
