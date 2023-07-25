@@ -42,7 +42,7 @@ class SlackSensor(Sensor):
                     match = re.search(pattern, text)
                     if match:
                         email_address = match.group(1)           
-                        payload = {}  
+                        payload = {}  #python dict  {"email":"DDdd","body":"dddd"}
                         payload["receiver_email"] = email_address.split('|')[0] 
 
                         #whatssapp
