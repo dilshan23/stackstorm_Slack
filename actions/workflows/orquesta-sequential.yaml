@@ -52,7 +52,7 @@ tasks:
     action: slack_dilshan.send_message
     input:
       text: <% ctx().receiver_email %>
-      whatsapp_status: "{{ ctx('whatsapp_output') }}"  
+      whatsapp_output: "{{ ctx('whatsapp_output') }}"  
 
 output:
   - whatsapp_output: "{{ ctx('whatsapp_output') }}"

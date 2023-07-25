@@ -9,7 +9,7 @@
       type: "string"
       description: "message to send"
       required: false
-    whatsapp_status:
+    whatsapp_output:
       type: "string"
       description: "whatsapp_status"
       required: false

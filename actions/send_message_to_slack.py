@@ -2,7 +2,7 @@ import slack
 from st2common.runners.base_action import Action
 
 class SendMessageToSlackAction(Action):
-    def run(self,text="test",whatsapp_status="ok"):
+    def run(self,text="test",whatsapp_output="ok"):
         if text is not None:
             text = "sent email to " + text
         else:
