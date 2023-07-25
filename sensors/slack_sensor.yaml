@@ -1,3 +1,35 @@
+# ---
+#   class_name: "SlackPollSensor"
+#   entry_point: "slack_sensor.py"
+#   description: "Sensor which monitors slack updates"
+#   poll_interval: 60
+#   trigger_types:
+#     -
+#       name: "new_update"
+#       description: "Trigger which indicates that a new update has been detected"
+#       payload_schema:
+#         type: "object"
+#         properties:
+#           text:
+#             type: "string"
+
+# ---
+#   class_name: "SampleSensor"
+#   entry_point: "slack_sensor.py"
+#   description: "Sample sensor that emits triggers."
+#   trigger_types:
+#     -
+#       name: "new_update"
+#       description: "An example trigger."
+#       payload_schema:
+#         type: "object"
+#         properties:
+#           executed_at:
+#             type: "string"
+#             format: "date-time"
+#             default: "2014-07-30 05:04:24.578325"
+
+
 ---
 class_name: "SlackSensor"
 entry_point: "slack_sensor.py"
