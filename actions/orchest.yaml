@@ -10,7 +10,7 @@ parameters:
     required: true
     type: string
     default: "dukelupin@gmail.com"
-  receiver_whatsapp:
+  receiver_whatsapp_number:
     required: true
     type: string
     default: "+9733333"

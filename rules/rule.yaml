@@ -15,8 +15,8 @@ action:
   ref: "slack_dilshan.sequential_slack"
   parameters:
     #text: "{{trigger.text}}"
-    receiver_email: "{{trigger.body.receiver_email}}"
-    receiver_whatsapp_number: "{{trigger.body.receiver_whatsapp_number}}"
-    receiver_sms: "{{trigger.body.receiver_sms}}"
+    receiver_email: "{{trigger.receiver_email}}"
+    receiver_whatsapp_number: "{{trigger.receiver_whatsapp_number}}"
+    receiver_sms: "{{trigger.receiver_sms}}"
 
   
