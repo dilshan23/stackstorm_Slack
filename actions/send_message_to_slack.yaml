@@ -9,7 +9,7 @@
       type: "string"
       description: "message to send"
       required: false
-    # channel_id:
-    #   type: "string"
-    #   description: "channel_id to post the message"
-    #   required: false
+    whatsapp_status:
+      type: "string"
+      description: "whatsapp_status"
+      required: false
