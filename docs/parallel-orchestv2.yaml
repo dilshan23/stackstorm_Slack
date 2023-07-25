@@ -33,7 +33,7 @@ tasks:
         publish:
           - email_output: "{{ result()}}"
         do: barrier_task
-        when: "{{ failed() }}"
+      - when: "{{ failed() }}"
         publish:
           - email_fail: "fail"
         do: notify_on_error
