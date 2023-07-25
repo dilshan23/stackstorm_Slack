@@ -11,10 +11,8 @@ criteria:
     pattern: "yahoo"
 #criteria: {}   #if we want empty criteria...no rule matching  
 action:
-  #ref: "slack_dilshan.send_message"
   ref: "slack_dilshan.sequential_slack"
   parameters:
-    #text: "{{trigger.text}}"
     receiver_email: "{{trigger.receiver_email}}"
     receiver_whatsapp_number: "{{trigger.receiver_whatsapp_number}}"
     receiver_sms: "{{trigger.receiver_sms}}"
