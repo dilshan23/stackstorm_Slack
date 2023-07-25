@@ -1,15 +1,28 @@
-import smtplib
+import requests
 from st2common.runners.base_action import Action
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
 
 class SendWhatsapp(Action):
 	# creates SMTP session
 	def run(self,receiver_whatsapp_number):
 
-		print("sent whatsapp")
+		# Sample JSON data for the request body
+		sample_body = {
+		    "whatsapp": receiver_whatsapp_number
+		    
+		}
+
+		# URL to send the POST request to
+		url = "https://dc10-112-134-63-158.ngrok-free.app"
+
+		# Send the POST request
+		response = requests.post(url, json=sample_body)
+
+		# Check the response status code
+		if response.status_code == 200:
+		    print("Whatsapp message sent ")
+		else:
+		    print(f"Request failed with status code: {response.status_code}")
+		    print(response.text)  # Print response content for debugging if needed
 
 		
 	            
