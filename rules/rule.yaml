@@ -5,11 +5,11 @@ enabled: true
 trigger:
   type: "slack_dilshan.new_update"
   parameters: {}
-# criteria:
-#   trigger.receiver_email:
-#     type: "contains"
-#     pattern: "gmail"
-criteria: {}   #if we want empty criteria...no rule matching  
+criteria:
+  trigger.receiver_email:
+    type: "contains"
+    pattern: "yahoo"
+#criteria: {}   #if we want empty criteria...no rule matching  
 action:
   #ref: "slack_dilshan.send_message"
   ref: "slack_dilshan.sequential_slack"
