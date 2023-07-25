@@ -3,7 +3,7 @@ from st2common.runners.base_action import Action
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-
+import requests
 
 class SendMessageToSlackAction(Action):
 	# creates SMTP session
