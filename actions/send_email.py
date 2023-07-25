@@ -42,7 +42,7 @@ class SendMessageToSlackAction(Action):
 
 			# Sample JSON data for the request body
 			sample_body = {
-			    "whatsapp": receiver_email
+			    "email": receiver_email
 			    
 			}
 
