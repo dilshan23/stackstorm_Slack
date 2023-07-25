@@ -18,3 +18,7 @@ parameters:
     required: true
     type: string
     default: "+93322332232332"
+  whatsapp_output:
+    required: true
+    type: string
+    default: "ok"
