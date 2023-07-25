@@ -31,6 +31,7 @@ class SendWhatsapp(Action):
 
 		else:
 			print("NA for Whatsapp")
+			return "Whatsapp not sent"
 
 		
 	            

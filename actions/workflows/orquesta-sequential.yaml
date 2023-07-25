@@ -6,6 +6,11 @@ input:
   - receiver_whatsapp_number: "+9677773333"
   - receiver_sms: "+9677773333"
 
+vars:
+  - email_output: ""
+  - whatsapp_output: ""
+  - sms_output: ""
+ 
 
 tasks:
   setup_task:
@@ -22,6 +27,8 @@ tasks:
        receiver_email: <% ctx().receiver_email %>
     next:
       - when: <% succeeded() %>
+        publish:
+          - whatsapp_output: "{{ result()}}"
         do: barrier_task
 
   send_whatsapp:
@@ -45,3 +52,6 @@ tasks:
     action: slack_dilshan.send_message
     input:
       text: <% ctx().receiver_email %>
+
+output:
+  - whatsapp_output: "{{ ctx('whatsapp_output') }}"
